@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Open+Sans:wght@400;500;600&family=Work+Sans:wght@400;500;700&display=swap");
+@import "rest";
+@import "variables";
+
+body {
+  background-color: $bg_primary;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
