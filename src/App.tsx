@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path='/' element={<RootComponent />}>
           <Route path='games' element={<Games />} />
-          <Route path='detail-game' element={<DetailGame />} />
+          <Route path='games/:id' element={<DetailGame />} />
         </Route>
 
       </Routes>
