@@ -4,7 +4,7 @@ interface UseFetchState<T> {
     data: null | T;
     error: null | Error;
 }
-export const useFetch = <T>(url: string, configs: object) => {
+export const useFetch = <T>(url: string, configs?: object) => {
     const [fetchState, setFetchState] = useState<UseFetchState<T>>({
         state: 'idle',
         data: null,
