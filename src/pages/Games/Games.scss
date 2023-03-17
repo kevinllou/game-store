@@ -6,7 +6,7 @@
   margin: 2rem auto;
   h1 {
     color: #ffff;
-    font-family: $font;
+    font-family: $f-workSans;
     text-transform: uppercase;
     font-size: 1.5rem;
     font-weight: 700;
@@ -19,7 +19,7 @@
   }
   &__gridItems {
     color: #ffff;
-    font-family: $font;
+    font-family: $f-workSans;
     cursor: pointer;
     p {
       margin-bottom: 0.4rem;
@@ -54,7 +54,7 @@
       border: 2px solid $color_purple;
       background-color: transparent;
       color: #ffff;
-      font-family: $font;
+      font-family: $f-workSans;
       font-weight: 700;
       cursor: pointer;
     }
