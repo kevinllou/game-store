@@ -1,0 +1,204 @@
+@import "../../styles/variables.scss";
+.header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0.8rem 2rem;
+  height: 70px;
+  background-color: #121927;
+  font-family: $f-workSans;
+
+  &__logo {
+    flex: 1;
+    a {
+      color: #ffff;
+      text-decoration: none;
+      i {
+        color: #9cb3e9;
+        font-size: 1.2rem;
+      }
+    }
+  }
+  &__dropdown {
+    display: inline-block;
+    position: relative;
+    i {
+      cursor: pointer;
+    }
+    &:hover .header__dropdownMenu {
+      display: flex !important;
+    }
+  }
+  &__dropdownMenu {
+    display: none !important;
+    flex-direction: column;
+    padding: 1rem;
+    position: absolute;
+    top: 100%;
+    min-width: 160px;
+    background-color: #363970;
+    color: $color_white;
+    z-index: 1;
+    border-radius: 0.5rem;
+    li {
+      display: block;
+    }
+  }
+
+  &__primaryNavigation,
+  &__form {
+    display: none;
+  }
+  &--active {
+    border-bottom: 4px solid $color_purple;
+  }
+  &__menuIcon {
+    display: block;
+    color: #a593c5;
+    font-size: 1.5rem;
+    z-index: 2;
+    cursor: pointer;
+  }
+  &__menuNavigation--responsive {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-flow: column;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #354463;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    transition: 0.6s;
+    transform: scaleY(100%);
+    .header__primaryNavigation {
+      display: block;
+      order: 1;
+      list-style: none;
+      li {
+        margin-bottom: 0.7rem;
+      }
+      li > a {
+        margin-bottom: 1rem;
+        color: #cccccc;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+    .header__form {
+      display: block;
+      order: 2;
+      width: 100%;
+      form {
+        display: flex;
+        justify-content: center;
+        input[type="search"] {
+          border: none;
+          border-radius: 0.3rem 0 0 0.3rem;
+          padding: 1rem 1rem;
+          width: 70%;
+          font-family: $f-workSans;
+          font-size: 0.8rem;
+          background-color: #202020;
+          color: #cccccc;
+        }
+        input::placeholder {
+          color: #cccccc;
+        }
+        button[type="submit"] {
+          border: none;
+          padding: 0.69rem 1rem;
+          border-radius: 0 0.3rem 0.3rem 0;
+          background-color: #202020;
+          i {
+            color: #cccccc;
+          }
+        }
+        input[type="search"]:focus,
+        button[type="submit"]:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $small_device) {
+    &__menuNavigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      flex: 1;
+      .header__primaryNavigation {
+        display: inline-flex;
+        gap: 0.5rem;
+        list-style: none;
+        ul {
+          display: flex;
+          gap: 0.5rem;
+          li > a {
+            margin-bottom: 1rem;
+            color: #cccccc;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+          }
+        }
+      }
+      .header__form {
+        display: block;
+        max-width: 400px;
+        width: 100%;
+        form {
+          input[type="search"] {
+            border: none;
+            width: 80%;
+            border-radius: 0.3rem 0 0 0.3rem;
+            padding: 0.69rem 1rem;
+            font-family: $f-workSans;
+            font-size: 0.8rem;
+            background-color: #354463;
+            color: #cccccc;
+          }
+          input::placeholder {
+            color: #cccccc;
+          }
+          button[type="submit"] {
+            border: none;
+            padding: 0.69rem 1rem;
+            border-radius: 0 0.3rem 0.3rem 0;
+            background-color: #354463;
+            i {
+              color: #cccccc;
+            }
+          }
+          input[type="search"]:focus,
+          button[type="submit"]:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+    &__logo {
+      flex: none;
+    }
+    &__menuIcon {
+      display: none;
+    }
+    &__dropdownMenu {
+      right: 100%;
+    }
+  }
+  &__logout {
+    border: none;
+    padding: 0.5rem 0.5rem;
+    font-family: $f-workSans;
+    background-color: $bg_primary;
+    color: $color_white;
+    border-radius: 0.3rem;
+  }
+}
