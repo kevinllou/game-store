@@ -25,12 +25,12 @@
     i {
       cursor: pointer;
     }
-    &:hover .header__dropdownMenu {
+   /*  &:hover .header__dropdownMenu {
       display: flex !important;
-    }
+    } */
   }
   &__dropdownMenu {
-    display: none !important;
+    display: none;
     flex-direction: column;
     padding: 1rem;
     position: absolute;
@@ -84,7 +84,6 @@
       li > a {
         margin-bottom: 1rem;
         color: #cccccc;
-        text-transform: uppercase;
         text-decoration: none;
         cursor: pointer;
       }
@@ -134,16 +133,15 @@
       padding: 0 2rem;
       flex: 1;
       .header__primaryNavigation {
-        display: inline-flex;
-        gap: 0.5rem;
+        display: flex;
+        gap: 1rem;
         list-style: none;
         ul {
           display: flex;
-          gap: 0.5rem;
+          gap: 1rem;
           li > a {
             margin-bottom: 1rem;
             color: #cccccc;
-            text-transform: uppercase;
             text-decoration: none;
             cursor: pointer;
           }

@@ -4,7 +4,9 @@ import './Navbar.scss';
 
 export default function Navbar(): JSX.Element {
     const [isOpen, setIsOpen] = useState(false);
+    const [showIconUser, setShowIconUser] = useState(true);
     const toggleMenu = () => setIsOpen(!isOpen);
+    const toggleIconUser = () => setShowIconUser(!showIconUser);
 
     return (
         <header className='header'>
@@ -27,8 +29,8 @@ export default function Navbar(): JSX.Element {
                             isActive ? "header--active" : ""
                         }>Games</NavLink></li>
                         <li className="header__dropdown">
-                            <i className="fa-solid fa-user" style={{ color: "white" }}></i>
-                            <ul className="header__dropdownMenu">
+                            <i className="fa-solid fa-user" style={{ color: "white" }} onClick={toggleIconUser} ></i>
+                            <ul className="header__dropdownMenu" style={showIconUser ? { display: "flex" } : { display: "none" }}>
                                 <li>Kevin Grande</li>
                                 <li><button className="header__logout">Logout</button></li>
                             </ul>
