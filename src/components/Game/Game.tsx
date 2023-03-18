@@ -11,17 +11,12 @@ export default function Game() {
     if (error) return <p style={{ color: "white" }}>There was an error</p>
 
     return (
-        <section className="games">
-            <div className="games__title">
-                <h1>ALL GAMES</h1>
+        <section className="cards">
+            <div className="cards__grid">
+                {
+                    data?.results.map((game, id) => <GameCard game={game} key={id} />)
+                }
             </div>
-            <section className="cards">
-                <div className="cards__grid">
-                    {
-                        data?.results.map((game, id) => <GameCard game={game} key={id} />)
-                    }
-                </div>
-            </section>
         </section>
     )
 }

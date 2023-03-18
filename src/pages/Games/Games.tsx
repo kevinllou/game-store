@@ -4,6 +4,11 @@ import './Games.scss';
 
 export default function Games() {
   return (
-    <Game />
+    <section className="games">
+      <div className="games__title">
+        <h1>ALL GAMES</h1>
+      </div>
+      <Game />
+    </section>
   )
 }
