@@ -3,12 +3,5 @@ import Game from '../../components/Game/Game';
 import './Games.scss';
 
 export default function Games() {
-  return (
-    <section className="games">
-      <div className="games__title">
-        <h1>ALL GAMES</h1>
-      </div>
-      <Game />
-    </section>
-  )
+  return <Game title='ALL GAMES' isFiltered={false} isPaginated={true} />
 }

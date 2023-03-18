@@ -5,7 +5,7 @@ interface GameCardProps {
 }
 
 
-export default function GameCard({ game: { background_image, name } }: GameCardProps) {
+export default function GameCard({ game: {id, slug, released, background_image, name } }: GameCardProps) {
     return (
         <article className="cards__gridItems">
             <div className="cards__gridItemsImg">
