@@ -1,10 +1,10 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 .detail {
   padding: 3rem 1rem;
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
-  font-family:$f-workSans;
+  font-family: $f-workSans;
   @media (min-width: 40em) {
     & {
       padding: 3rem 4rem;
@@ -39,19 +39,19 @@
     font-weight: 700;
     margin-bottom: 0.5rem;
   }
-  &__cardDescription{
-    margin-top: .5rem;
+  &__cardDescription {
+    margin-top: 0.5rem;
     line-height: 1.1rem;
   }
-  &__released{
+  &__released {
     font-weight: bold;
     span {
-        font-weight: 100;
-        background-color: $color_purple;
-        padding: .1rem .5rem;
-        color: $color_white;
-        font-size: .9rem;
-        border-radius: .2rem;
+      font-weight: 100;
+      background-color: $color_purple;
+      padding: 0.1rem 0.5rem;
+      color: $color_white;
+      font-size: 0.9rem;
+      border-radius: 0.2rem;
     }
   }
   &__cardBodyBottom {
@@ -65,7 +65,7 @@
       }
     }
     button {
-      font-family:$f-workSans;
+      font-family: $f-workSans;
       border: none;
       padding: 0.7rem 2rem;
       background-color: $color_purple;
@@ -87,15 +87,14 @@
     display: flex;
     gap: 1rem;
     padding: 1rem;
-    margin: .8rem 0;
+    margin: 0.8rem 0;
     border-radius: 8px;
     background-color: rgb(255, 255, 255);
   }
-  &__commentBodyUserInfo {
+  &__commentsUser {
     p:first-child {
       margin-bottom: 0.5rem;
       font-weight: 700;
     }
   }
 }
-
