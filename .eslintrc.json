@@ -17,10 +17,33 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "no-extra-semi": "off",
+    "@typescript-eslint/no-extra-semi": "error",
     "no-mixed-spaces-and-tabs": 0,
+    "no-console": "error",
     "indent": ["error", "tab"],
     "linebreak-style": ["error", "windows"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"]
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "semi": "off",
+    "@typescript-eslint/member-delimiter-style": [
+      "warn",
+      {
+        "multiline": {
+          "delimiter": "semi",
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "semi",
+          "requireLast": false
+        },
+        "multilineDetection": "brackets"
+      }
+    ]
   }
 }
