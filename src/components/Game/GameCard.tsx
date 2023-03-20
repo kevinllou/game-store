@@ -1,8 +1,6 @@
 import React from 'react'
-import { GameCardProps } from '../../interfaces/IGameCardProps'
 import IGames from '../../interfaces/IGames'
-
-export default function GameCard({ game: { background_image, name } }: GameCardProps<IGames>) {
+export default function GameCard({ background_image, name }: IGames) {
     return (
         <article className="cards__gridItems">
             <div className="cards__gridItemsImg">

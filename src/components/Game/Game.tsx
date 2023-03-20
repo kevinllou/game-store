@@ -30,7 +30,7 @@ export default function Game({ title, isFiltered, isPaginated }: GamesProp) {
             <section className="cards">
                 <div className="cards__grid">
                     {
-                        games?.map((game, id) => <GameCard game={game} key={id} />)
+                        games?.map((game, id) => <GameCard {...game} key={id} />)
                     }
                 </div>
                 {isPaginated &&
