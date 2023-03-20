@@ -4,7 +4,7 @@ import './Navbar.scss';
 
 export default function Navbar(): JSX.Element {
     const [isOpen, setIsOpen] = useState(false);
-    const [showIconUser, setShowIconUser] = useState(true);
+    const [showIconUser, setShowIconUser] = useState(false);
     const toggleMenu = () => setIsOpen(!isOpen);
     const toggleIconUser = () => setShowIconUser(!showIconUser);
 
