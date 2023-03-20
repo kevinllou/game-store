@@ -4,6 +4,7 @@ import { useFetch } from '../../hooks/useFetch';
 import { IDetailGame } from '../../interfaces/IDetailGame';
 import { ENDPOINTS } from '../../constants/endpoints';
 import Spinner from '../../components/Spinner/Spinner';
+import Comment from '../../components/Comments/Comment';
 
 export default function DetailGame() {
 	const { id } = useParams();
@@ -28,6 +29,7 @@ export default function DetailGame() {
 					</div>
 				</div>
 			</div>
+			<Comment gameId={id} />
 		</section >
 
 	);
