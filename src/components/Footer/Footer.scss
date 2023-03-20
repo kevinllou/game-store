@@ -10,7 +10,6 @@
   background-color: #121927;
   color: #ffff;
   &__secondNavigation {
-    list-style: none;
     display: flex;
     gap: 1rem;
     margin: 0.5rem 0;
@@ -27,7 +26,11 @@
   &__socialMedia {
     display: flex;
     gap: 2rem;
-    a {
+    li {
+      list-style: none;
+      text-decoration: none;
+    }
+    li {
       color: #ffff;
       i {
         font-size: 1.5rem;

@@ -6,10 +6,10 @@ export default function Footer(): JSX.Element {
   return (
     <footer className="footer">
       <div className="footer__socialMedia">
-        <a href="#"><i className="fa-brands fa-facebook"></i></a>
-        <a href="#"><i className="fa-brands fa-twitter"></i></a>
-        <a href="#"><i className="fa-brands fa-linkedin"></i></a>
-        <a href="#"><i className="fa-brands fa-instagram"></i></a>
+        <li><i className="fa-brands fa-facebook"></i></li>
+        <li><i className="fa-brands fa-twitter"></i></li>
+        <li><i className="fa-brands fa-linkedin"></i></li>
+        <li><i className="fa-brands fa-instagram"></i></li>
       </div>
       <ul className="footer__secondNavigation">
         <li><NavLink to='/' className={({ isActive }) =>
