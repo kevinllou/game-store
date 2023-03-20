@@ -1,0 +1,100 @@
+@import "../../styles/variables.scss";
+.detail {
+  padding: 3rem 1rem;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  font-family:$f-workSans;
+  @media (min-width: 40em) {
+    & {
+      padding: 3rem 4rem;
+    }
+  }
+  &__card {
+    background-color: rgba(255, 255, 255, 0.938);
+    border-radius: 8px;
+  }
+  &__cardImg {
+    height: 270px;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
+  }
+  @media (min-width: 40em) {
+    &__cardImg {
+      height: 500px;
+    }
+  }
+  &__cardBody {
+    padding: 0.5rem 2rem;
+  }
+  &__cardBodyInfo {
+    margin-bottom: 1rem;
+  }
+  &__cardBodyTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  &__cardDescription{
+    margin-top: .5rem;
+    line-height: 1.1rem;
+  }
+  &__released{
+    font-weight: bold;
+    span {
+        font-weight: 100;
+        background-color: $color_purple;
+        padding: .1rem .5rem;
+        color: $color_white;
+        font-size: .9rem;
+        border-radius: .2rem;
+    }
+  }
+  &__cardBodyBottom {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      font-weight: 700;
+      i {
+        color: rgb(61, 60, 61);
+      }
+    }
+    button {
+      font-family:$f-workSans;
+      border: none;
+      padding: 0.7rem 2rem;
+      background-color: $color_purple;
+      color: #ffff;
+      font-weight: 700;
+      border-radius: 4rem;
+    }
+  }
+  &__comments {
+    padding: 1rem 0;
+    h1 {
+      font-size: 1.5rem;
+      color: #dddddd;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+  }
+  &__commentsBody {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+  }
+  &__commentBodyUserInfo {
+    p:first-child {
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+  }
+}
+
