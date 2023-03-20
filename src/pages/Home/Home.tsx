@@ -8,5 +8,5 @@ export default function Home() {
 			<Hero />
 			<Game title='MORE POPULARS'  isFiltered={true} isPaginated={false} />
 		</>
-	)
+	);
 }
