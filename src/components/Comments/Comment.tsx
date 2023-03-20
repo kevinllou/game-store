@@ -15,8 +15,7 @@ export default function Comment({ gameId }: CommentProps) {
 	if (errorComments && usersError) return <p style={{ color: 'white' }}>There was an error</p>;
 	return (
 		<div className="detail__comments">
-			<h1>Comments</h1>
-
+			{comments?.length === 0 ? <h1>No comments</h1> : <h1>Comments</h1>}
 			{comments?.map(({ userId, comment }, id) => {
 				return (
 					<div className="detail__commentsBody" key={id}>
