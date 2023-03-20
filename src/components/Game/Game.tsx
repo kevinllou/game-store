@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { ENDPOINTS } from '../../constants/endpoints';
 import { getGamesArray } from '../../helpers/getGamesArray';
 import { useFetch } from '../../hooks/useFetch'
 import IApiResponse from '../../interfaces/IApiResponse';
@@ -15,7 +16,8 @@ export default function Game({ title, isFiltered, isPaginated }: GamesProp) {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [maxPageLimit, setMaxPageLimit] = useState(10);
     const [minPageLimit, setMinPageLimit] = useState(0);
-    const { state, data, error } = useFetch<IApiResponse<IGames>>(`https://api.rawg.io/api/games?key=7edd2f707e03410492606c88e8cc5965&page=${currentPage}&page_size=10`);
+    const { state, data, error } = useFetch<IApiResponse<IGames>>(`${ENDPOINTS.GET_GAMES}&page=${currentPage}&page_size=10`);
+
     const games = getGamesArray(data?.results, isFiltered);
     const updateCurrentPage = (currentPage: number) => setCurrentPage(currentPage);
     const updateMaxPageLimit = (currentMax: number) => setMaxPageLimit(currentMax);
@@ -47,4 +49,3 @@ export default function Game({ title, isFiltered, isPaginated }: GamesProp) {
         </section>
     )
 }
-  
