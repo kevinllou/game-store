@@ -1,4 +1,5 @@
 import React from 'react'
+import { getPagesPagination } from '../../helpers/getPagesPagination';
 import './Pagination.scss';
 
 interface PaginationProps {
@@ -19,13 +20,9 @@ export default function Pagination({
     updateMaxPageLimit,
     updateMinPageLimit,
     updateCurrentPage }: PaginationProps) {
-        
-    let pages: number[] = [];
-    for (let i = 1; i <= totalPages; i++) {
-        pages.push(i);
-    }
-    const PAGE_NUMBER_LIMIT = 10;
 
+    let pages = getPagesPagination(totalPages);
+    const PAGE_NUMBER_LIMIT = 10;
     const onPrevClick = () => {
         if ((currentPage - 1) % PAGE_NUMBER_LIMIT === 0) {
             updateMaxPageLimit(maxPageLimit - PAGE_NUMBER_LIMIT);

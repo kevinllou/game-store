@@ -47,3 +47,4 @@ export default function Game({ title, isFiltered, isPaginated }: GamesProp) {
         </section>
     )
 }
+  
