@@ -4,14 +4,11 @@ import { getGamesArray } from '../../helpers/getGamesArray';
 import { useFetch } from '../../hooks/useFetch'
 import IApiResponse from '../../interfaces/IApiResponse';
 import IGames from '../../interfaces/IGames';
+import { GamesProp } from '../../interfaces/IGamesProp';
 import Pagination from '../Pagination/Pagination';
 import Spinner from '../Spinner/Spinner';
 import GameCard from './GameCard';
-interface GamesProp {
-    title: string;
-    isFiltered: boolean;
-    isPaginated: boolean;
-}
+
 export default function Game({ title, isFiltered, isPaginated }: GamesProp) {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [maxPageLimit, setMaxPageLimit] = useState(10);
