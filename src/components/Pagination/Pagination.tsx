@@ -2,43 +2,65 @@ import React from 'react'
 import './Pagination.scss';
 
 interface PaginationProps {
-    totalPost: number;
-    postsPerPage: number;
+    totalPages: number;
     currentPage: number;
+    maxPageLimit: number;
+    minPageLimit: number;
+    updateMaxPageLimit: (currentMax: number) => void;
+    updateMinPageLimit: (currentMin: number) => void;
     updateCurrentPage: (currentPage: number) => void;
 }
 
-export default function Pagination({ totalPost, postsPerPage, currentPage, updateCurrentPage }: PaginationProps) {
-    let pages = [];
-    for (let i = 1; i <= Math.ceil(totalPost / postsPerPage); i++) {
+export default function Pagination({
+    totalPages,
+    currentPage,
+    maxPageLimit,
+    minPageLimit,
+    updateMaxPageLimit,
+    updateMinPageLimit,
+    updateCurrentPage }: PaginationProps) {
+        
+    let pages: number[] = [];
+    for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
     }
-    const next = () => {
-        if (currentPage === Math.ceil(totalPost / postsPerPage)) return;
-        updateCurrentPage(currentPage + 1);
+    const PAGE_NUMBER_LIMIT = 10;
 
-    }
-    const previous = () => {
-        if (currentPage === 1) return;
+    const onPrevClick = () => {
+        if ((currentPage - 1) % PAGE_NUMBER_LIMIT === 0) {
+            updateMaxPageLimit(maxPageLimit - PAGE_NUMBER_LIMIT);
+            updateMinPageLimit(minPageLimit - PAGE_NUMBER_LIMIT);
+        }
         updateCurrentPage(currentPage - 1);
-
     }
 
-
+    const onNextClick = () => {
+        if (currentPage + 1 > maxPageLimit) {
+            updateMaxPageLimit(maxPageLimit + PAGE_NUMBER_LIMIT);
+            updateMinPageLimit(minPageLimit + PAGE_NUMBER_LIMIT);
+        }
+        updateCurrentPage(currentPage + 1);
+    }
     return (
         <section className='pagination'>
-            <button /* onClick={previous} */>Previous</button>
-            {/*    {pages.map((page, id) => {
-                return (
+            <button onClick={onPrevClick}>Previous</button>
+            {minPageLimit >= 1 && <li>...</li>}
 
-                    <div className="pagination__items" key={id + 1}>
-                        <button className={page === currentPage ? "pagination__active" : ""} onClick={() => updateCurrentPage(id + 1)}>{page}</button>
-                    </div>
-                )
-            })
-            } */}
-            <button /* onClick={next} */> Next</button>
+            {
+                pages.map((page, id) => {
+                    return page <= maxPageLimit && page > minPageLimit && (
+                        <button
+                            className={page === currentPage ? "pagination__active" : ""}
+                            onClick={() => updateCurrentPage(id + 1)}
+                            key={id}>
+                            {page}
+                        </button>
+                    )
+                })
+            }
+            {pages.length > maxPageLimit && <li>...</li>}
+            <button onClick={onNextClick}> Next</button>
         </section >
     )
-
 }
+

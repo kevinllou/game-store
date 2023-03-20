@@ -1,20 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { getGamesArray } from '../../helpers/getGamesArray';
 import { useFetch } from '../../hooks/useFetch'
 import IApiResponse from '../../interfaces/IApiResponse';
 import IGames from '../../interfaces/IGames';
+import Pagination from '../Pagination/Pagination';
 import Spinner from '../Spinner/Spinner';
 import GameCard from './GameCard';
-
 interface GamesProp {
     title: string;
     isFiltered: boolean;
     isPaginated: boolean;
 }
-
 export default function Game({ title, isFiltered, isPaginated }: GamesProp) {
-    const { state, data, error } = useFetch<IApiResponse<IGames>>('https://api.rawg.io/api/games?key=7edd2f707e03410492606c88e8cc5965');
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [maxPageLimit, setMaxPageLimit] = useState(10);
+    const [minPageLimit, setMinPageLimit] = useState(0);
+    const { state, data, error } = useFetch<IApiResponse<IGames>>(`https://api.rawg.io/api/games?key=7edd2f707e03410492606c88e8cc5965&page=${currentPage}&page_size=10`);
     const games = getGamesArray(data?.results, isFiltered);
+    const updateCurrentPage = (currentPage: number) => setCurrentPage(currentPage);
+    const updateMaxPageLimit = (currentMax: number) => setMaxPageLimit(currentMax);
+    const updateMinPageLimit = (currentMin: number) => setMinPageLimit(currentMin);
 
     if (state === 'loading') return <Spinner />
     if (error) return <p style={{ color: "white" }}>There was an error</p>
@@ -29,6 +34,15 @@ export default function Game({ title, isFiltered, isPaginated }: GamesProp) {
                         games?.map((game, id) => <GameCard game={game} key={id} />)
                     }
                 </div>
+                {isPaginated &&
+                    <Pagination totalPages={100}
+                        currentPage={currentPage}
+                        maxPageLimit={maxPageLimit}
+                        minPageLimit={minPageLimit}
+                        updateCurrentPage={updateCurrentPage}
+                        updateMaxPageLimit={updateMaxPageLimit}
+                        updateMinPageLimit={updateMinPageLimit} />}
+
             </section>
         </section>
     )
