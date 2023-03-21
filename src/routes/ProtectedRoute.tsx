@@ -6,8 +6,8 @@ interface ProtectedRouteProps {
     redirectPath: string;
 }
 export default function ProtectedRoute({ auth, redirectPath }: ProtectedRouteProps) {
-	if (!auth) {
-		return <Navigate to={redirectPath} />;
+	if (!auth?.isAuthenticated) {
+		return <Navigate to={redirectPath} replace />;
 	}
 	return (
 		<Outlet />

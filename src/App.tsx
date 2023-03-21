@@ -7,15 +7,17 @@ import Games from './pages/Games/Games';
 import { ROUTES } from './routes/routes';
 import ProtectedRoute from './routes/ProtectedRoute';
 import useAuth from './hooks/useAuth';
+import Login from './pages/Login/Login';
 function App() {
-	const { auth } = useAuth();
+	const { auth, login, logout } = useAuth();
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path={ROUTES.ROOT} element={<RootComponent />}>
+				<Route path={ROUTES.ROOT} element={<RootComponent {...auth} logout={logout} />}>
 					<Route index element={<Home />} />
 					<Route path={ROUTES.GAMES} element={<Games />} />
-					<Route element={<ProtectedRoute auth={auth} redirectPath={ROUTES.ROOT}/>}>
+					<Route path={ROUTES.LOGIN} element={<Login login={login}/>} />
+					<Route element={<ProtectedRoute auth={auth} redirectPath={`${ROUTES.LOGIN}`} />}>
 						<Route path={ROUTES.GAMES_ID} element={<DetailGame />} />
 					</Route>
 				</Route>

@@ -1,8 +1,14 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { IUsers } from '../../interfaces/IUsers';
 import './Navbar.scss';
 
-export default function Navbar(): JSX.Element {
+interface NavProps {
+	userInformation: IUsers[] | null | undefined;
+	logout: () => void;
+}
+
+export default function Navbar({ userInformation, logout }: NavProps): JSX.Element {
 	const [isOpen, setIsOpen] = useState(false);
 	const [showIconUser, setShowIconUser] = useState(false);
 	const toggleMenu = () => setIsOpen(!isOpen);
@@ -28,13 +34,15 @@ export default function Navbar(): JSX.Element {
 						<li><NavLink to='/games' className={({ isActive }) =>
 							isActive ? 'header--active' : ''
 						}>Games</NavLink></li>
-						<li className="header__dropdown">
-							<i className="fa-solid fa-user" style={{ color: 'white' }} onClick={toggleIconUser} ></i>
-							<ul className="header__dropdownMenu" style={showIconUser ? { display: 'flex' } : { display: 'none' }}>
-								<li>Kevin Grande</li>
-								<li><button className="header__logout">Logout</button></li>
-							</ul>
-						</li>
+						{
+							userInformation && <li className="header__dropdown">
+								<i className="fa-solid fa-user" style={{ color: 'white' }} onClick={toggleIconUser} ></i>
+								<ul className="header__dropdownMenu" style={showIconUser ? { display: 'flex' } : { display: 'none' }}>
+									<li>{userInformation[0].name}</li>
+									<li><button className='header__logout' onClick={logout}>Logout</button></li>
+								</ul>
+							</li>
+						}
 					</ul>
 				</nav>
 			</div>

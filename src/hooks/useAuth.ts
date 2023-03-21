@@ -15,13 +15,13 @@ const useAuth = () => {
 	};
 
 	const login = (emailUser: string | undefined, passwordUser: string | undefined) => {
-		let success = false;
+		let stateOfLogin = false;
 		const userInformation = data?.filter(({email, password})=> email === emailUser && password === passwordUser);
-		if(userInformation){
+		if(userInformation && userInformation?.length > 0){
 			setAuth({ isAuthenticated: true, userInformation });
-			success = true;
+			stateOfLogin = true;
 		}
-		return success;
+		return stateOfLogin;
 	};
 	useEffect(() => {
 		if (auth && !key) {

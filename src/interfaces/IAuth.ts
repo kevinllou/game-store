@@ -1,4 +1,6 @@
-export interface IAuth{
+import { IUsers } from './IUsers';
+
+export interface IAuth {
     isAuthenticated: boolean;
-    userInformation: object;
+    userInformation: IUsers[] | null;
 }

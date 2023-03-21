@@ -1,20 +1,25 @@
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { IAuth } from '../../interfaces/IAuth';
 import './Login.scss';
 
 interface LoginProps {
-    login: (emailValue: string | undefined, passwordValue: string | undefined) => boolean;
+	login: (emailValue: string | undefined, passwordValue: string | undefined) => boolean;
+	
 }
+
 export default function Login({ login }: LoginProps) {
 	const emailRef = useRef<HTMLInputElement | null>(null);
 	const passwordRef = useRef<HTMLInputElement | null>(null);
-
-
-	const handleSubmit = (e: React.FormEvent<EventTarget>): void => {
+	const navigate = useNavigate();
+	const handleSubmit = (e: React.FormEvent<EventTarget>) => {
 		e.preventDefault();
-		const success = login(emailRef.current?.value, passwordRef.current?.value);
-		if (!success) {
-			/* alert('Email and password incorrect'); */
+		const stateOfLogin = login(emailRef.current?.value, passwordRef.current?.value);
+		if (!stateOfLogin) {
+			alert('Email and password incorrect');
+			return;
 		}
+		navigate(-1);
 	};
 	return (
 		<section className="login">
