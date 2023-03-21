@@ -3,9 +3,9 @@ import { ENDPOINTS } from '../constants/endpoints';
 import { IAuth } from '../interfaces/IAuth';
 import { IUsers } from '../interfaces/IUsers';
 import { useFetch } from './useFetch';
-
+import useLocalStorage from '../hooks/useLocalStorage';
 const useAuth = () => {
-	const key = localStorage.getItem('auth') || null;
+	const [authKeyLocalStorage, setAuthKeyLocalStorage] = useLocalStorage('auth', '');
 	const [auth, setAuth] = useState<null | IAuth >();
 	const { data} = useFetch<IUsers[]>(`${ENDPOINTS.GET_USERS}`);
     
@@ -24,13 +24,13 @@ const useAuth = () => {
 		return stateOfLogin;
 	};
 	useEffect(() => {
-		if (auth && !key) {
-			localStorage.setItem('auth', JSON.stringify(auth));
+		if (auth && !authKeyLocalStorage) {
+			setAuthKeyLocalStorage(JSON.stringify(auth));
 		}
 	}, [auth]);
 	useEffect(() => {
-		if (key) setAuth(JSON.parse(key));
-	}, [key]);
+		if (authKeyLocalStorage) setAuth(JSON.parse(authKeyLocalStorage));
+	}, [authKeyLocalStorage]);
 	return { auth, login, logout };
 
 };
