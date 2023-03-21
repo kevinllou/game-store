@@ -6,9 +6,9 @@ import { useFetch } from './useFetch';
 import useLocalStorage from '../hooks/useLocalStorage';
 const useAuth = () => {
 	const [authKeyLocalStorage, setAuthKeyLocalStorage] = useLocalStorage('auth', '');
-	const [auth, setAuth] = useState<null | IAuth >();
-	const { data} = useFetch<IUsers[]>(`${ENDPOINTS.GET_USERS}`);
-    
+	const [auth, setAuth] = useState<null | IAuth>();
+	const { data } = useFetch<IUsers[]>(`${ENDPOINTS.GET_USERS}`);
+
 	const logout = () => {
 		setAuth(null);
 		localStorage.clear();
@@ -16,8 +16,8 @@ const useAuth = () => {
 
 	const login = (emailUser: string | undefined, passwordUser: string | undefined) => {
 		let stateOfLogin = false;
-		const userInformation = data?.filter(({email, password})=> email === emailUser && password === passwordUser);
-		if(userInformation && userInformation?.length > 0){
+		const userInformation = data?.filter(({ email, password }) => email === emailUser && password === passwordUser);
+		if (userInformation && userInformation?.length > 0) {
 			setAuth({ isAuthenticated: true, userInformation });
 			stateOfLogin = true;
 		}
