@@ -1,4 +1,3 @@
-
 import { useRef, useState } from 'react';
 import { ENDPOINTS } from '../../constants/endpoints';
 import { IUsers } from '../../interfaces/IUsers';
