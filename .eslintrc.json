@@ -29,7 +29,7 @@
     "no-mixed-spaces-and-tabs": 0,
 
     "indent": ["error", "tab"],
-    "linebreak-style": [0 ,"error", "windows"], 
+    "linebreak-style": [0 ,"error", "unix"], 
     "quotes": [
       "error",
       "single",
