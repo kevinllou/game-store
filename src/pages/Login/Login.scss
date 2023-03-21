@@ -1,0 +1,57 @@
+@import "../../styles/variables.scss";
+
+.login {
+  margin: 3rem auto;
+  max-width: 450px;
+  width: 100%;
+  background-color: $color_purple;
+  color: #ffff;
+  font-family: $font;
+  padding: 2.5rem 2rem;
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &__form {
+    /*  display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; */
+    input {
+      font-family: $font;
+      width: 100%;
+      height: 45px;
+      margin: 0.5rem 0;
+      border: none;
+      padding: 0.5rem 1rem;
+    }
+    input:focus {
+      outline-style: none;
+    }
+    button[type="submit"] {
+      margin: 0.5rem 0;
+      padding: 0.5rem 1.5rem;
+      font-family: $font;
+      border: none;
+      background-color: $bg_primary;
+      color: #ffff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+  @media (max-width: 40em) {
+    & {
+      background-color: transparent;
+      h1 {
+        font-size: 1.4rem;
+      }
+      button[type="submit"] {
+        background-color: $color_purple;
+      }
+    }
+  }
+}
+
