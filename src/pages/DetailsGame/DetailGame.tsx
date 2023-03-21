@@ -5,8 +5,9 @@ import { IDetailGame } from '../../interfaces/IDetailGame';
 import { ENDPOINTS } from '../../constants/endpoints';
 import Spinner from '../../components/Spinner/Spinner';
 import Comment from '../../components/Comments/Comment';
+import { IDetailProps } from '../../interfaces/IDetailProps';
 
-export default function DetailGame() {
+export default function DetailGame({userInformation }: IDetailProps) {
 	const { id } = useParams();
 	const { state, data, error } = useFetch<IDetailGame>(`${ENDPOINTS.GET_GAME_BY_ID}/${id}?key=${process.env.REACT_APP_API_KEY}`);
 
@@ -29,7 +30,7 @@ export default function DetailGame() {
 					</div>
 				</div>
 			</div>
-			<Comment gameId={id} />
+			<Comment gameId={id} userInformation={userInformation}/>
 		</section >
 
 	);

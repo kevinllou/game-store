@@ -18,7 +18,7 @@ function App() {
 					<Route path={ROUTES.GAMES} element={<Games />} />
 					<Route path={ROUTES.LOGIN} element={<Login login={login}/>} />
 					<Route element={<ProtectedRoute auth={auth} redirectPath={`${ROUTES.LOGIN}`} />}>
-						<Route path={ROUTES.GAMES_ID} element={<DetailGame />} />
+						<Route path={ROUTES.GAMES_ID} element={<DetailGame {...auth}/>} />
 					</Route>
 				</Route>
 

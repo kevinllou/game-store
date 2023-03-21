@@ -7,8 +7,9 @@ import Spinner from '../Spinner/Spinner';
 
 interface CommentProps {
 	gameId: string | undefined;
+	userInformation:  IUsers[] | null | undefined;
 }
-export default function Comment({ gameId }: CommentProps) {
+export default function Comment({ gameId, userInformation }: CommentProps) {
 	const { state: stateComments, data: comments, error: errorComments } = useFetch<IComments[]>(`${ENDPOINTS.GET_COMMENTS}?gameId=${gameId}`);
 	const { state: stateUsers, data: users, error: usersError } = useFetch<IUsers[]>(`${ENDPOINTS.GET_USERS}`);
 
@@ -17,7 +18,7 @@ export default function Comment({ gameId }: CommentProps) {
 	return (
 		<div className="detail__comments">
 			{comments?.length === 0 ? <h1>No comments</h1> : <h1>Comments</h1>}
-			<PostForm />
+			<PostForm gameId={gameId} userInformation={userInformation}/>
 			{comments?.map(({ userId, comment }, id) => {
 				return (
 					<div className="detail__commentsBody" key={id}>
