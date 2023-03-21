@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ENDPOINTS } from '../constants/endpoints';
+import { IAuth } from '../interfaces/IAuth';
 import { IUsers } from '../interfaces/IUsers';
 import { useFetch } from './useFetch';
 
-interface IAuth{
-    isAuthenticated: boolean;
-    userInformation: object;
-}
 const useAuth = () => {
 	const key = localStorage.getItem('auth') || null;
 	const [auth, setAuth] = useState<null | IAuth >();
