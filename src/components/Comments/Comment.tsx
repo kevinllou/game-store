@@ -2,6 +2,7 @@ import { ENDPOINTS } from '../../constants/endpoints';
 import { useFetch } from '../../hooks/useFetch';
 import { IComments } from '../../interfaces/IComments';
 import { IUsers } from '../../interfaces/IUsers';
+import PostForm from '../PostForm/PostForm';
 import Spinner from '../Spinner/Spinner';
 
 interface CommentProps {
@@ -16,6 +17,7 @@ export default function Comment({ gameId }: CommentProps) {
 	return (
 		<div className="detail__comments">
 			{comments?.length === 0 ? <h1>No comments</h1> : <h1>Comments</h1>}
+			<PostForm />
 			{comments?.map(({ userId, comment }, id) => {
 				return (
 					<div className="detail__commentsBody" key={id}>

@@ -1,0 +1,29 @@
+@import '../../styles/variables.scss';
+
+.form {
+  display: block;
+  gap: 0.5rem;
+  textarea {
+    height: 100px;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    font-family: $f-workSans;
+  }
+  textarea:focus {
+    outline-style: none;
+  }
+  &__button {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      font-family: $f-workSans;
+      width: 80px;
+      background-color: $color_purple;
+      border: none;
+      color: $color_white;
+      padding: 0.4rem 1rem;
+      border-radius: 0.2rem;
+      cursor: pointer;
+    }
+  }
+}
